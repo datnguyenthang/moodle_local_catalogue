@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<XMLDB PATH="local/catalogue/db" VERSION="20170116" COMMENT="XMLDB file for Moodle local/catalogue"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="../../../lib/xmldb/xmldb.xsd"
+>
+    <TABLES>
+        <!-- Table: local_catalogue_categories -->
+        <TABLE NAME="local_catalogue_categories" COMMENT="local_catalogue_categories">
+            <FIELDS>
+                <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true" />
+                <FIELD NAME="parent" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false" />
+                <FIELD NAME="name" TYPE="text" NOTNULL="true" SEQUENCE="false" />
+                <FIELD NAME="description" TYPE="text" NOTNULL="true" SEQUENCE="false"/>
+                <FIELD NAME="status" TYPE="tinyint" LENGTH="2" NOTNULL="true" SEQUENCE="false" />
+                <FIELD NAME="visible" TYPE="tinyint" LENGTH="2" NOTNULL="true" SEQUENCE="false" />
+                <FIELD NAME="sortorder" TYPE="int" LENGTH="10" NOTNULL="false" DEFAULT="0"/>
+                <FIELD NAME="timecreated" TYPE="int" LENGTH="10" NOTNULL="false" SEQUENCE="false" />
+                <FIELD NAME="timemodified" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false" />
+                <FIELD NAME="createdby" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false"/>
+                <FIELD NAME="modifiedby" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false"/>
+            </FIELDS>
+            <KEYS>
+                <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+            </KEYS>
+            <INDEXES>
+                <INDEX NAME="parent" UNIQUE="false" FIELDS="parent"/>
+            </INDEXES>
+        </TABLE>
+
+        <!-- Table: local_catalogue_courses -->
+        <TABLE NAME="local_catalogue_courses" COMMENT="local_catalogue_courses">
+            <FIELDS>
+                <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
+                <FIELD NAME="category_id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false"/>
+                <FIELD NAME="name" TYPE="text" NOTNULL="true" SEQUENCE="false"/>
+                <FIELD NAME="description" TYPE="text" NOTNULL="true" SEQUENCE="false"/>
+                <FIELD NAME="duration" TYPE="text" NOTNULL="true" SEQUENCE="false"/>
+                <FIELD NAME="code" TYPE="char" LENGTH="255" NOTNULL="true" SEQUENCE="false"/>
+                <FIELD NAME="visible" TYPE="tinyint" LENGTH="2" NOTNULL="true" SEQUENCE="false"/>
+                <FIELD NAME="type" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false" COMMENT="0:online, 1:offline, 2 pledge"/>
+                <FIELD NAME="status" TYPE="int" LENGTH="2" NOTNULL="true" SEQUENCE="false" />
+                <FIELD NAME="timecreated" TYPE="int" LENGTH="10" NOTNULL="false" SEQUENCE="false" />
+                <FIELD NAME="timemodified" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false" />
+                <FIELD NAME="createdby" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false" />
+                <FIELD NAME="modifiedby" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false"/>
+            </FIELDS>
+            <KEYS>
+                <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+            </KEYS>
+            <INDEXES>
+                <INDEX NAME="category_id" UNIQUE="false" FIELDS="category_id"/>
+            </INDEXES>
+        </TABLE>
+
+    </TABLES>
+</XMLDB>
